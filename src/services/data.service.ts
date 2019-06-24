@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,26 +13,43 @@ export class DataService {
     DataService.location = new Location();
     DataService.location.Menu = database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Menu').valueChanges();
     DataService.location.Orders = database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders').valueChanges();
-    DataService.location.Parties = database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Parties').valueChanges();
+    DataService.location.Parties = database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Parties').valueChanges();    
   }
 
-  addParty() {
+  addParty()
+  addParty(table: number)
+  addParty(table: number, size: number)
+  addParty(table?: number, size?: number) {
+    if (!size) { size = 1 }
+    if (!table) { table = 0 }
     let data = {
-      table: 3
+      table: table,
+      size: size
     }
     return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Parties').add(data);
   }
 
 
-
-  getArticles() {
-    return this.database.collection('aeMFrRDSm3HJvnb2pBrr').valueChanges();
+  getMenuCatagories() {
+    return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('MenuCategories').doc('Categories').valueChanges();
   }
+  getMenuItems(): Observable<any>
+  getMenuItems(categories: string): Observable<any>
+  getMenuItems(categories?: string) : Observable<any> {    
+    if (!categories || categories === "All") {
+      return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Menu').valueChanges();
+      
+    } else {
+      return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr')
+      .collection('Menu', ref => ref.where('category', '==', categories)).valueChanges()      
+    }
+  }
+
 
 }
 
 export class Location {
-  Menu: any;
-  Orders: any;
-  Parties: any;
+  Menu: Observable<any>;
+  Orders: Observable<any>;
+  Parties: Observable<any>;
 }
