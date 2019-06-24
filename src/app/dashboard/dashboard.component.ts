@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { DataService } from 'src/services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,9 +7,12 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
-
+  categories: {} = {};
+  constructor(database: DataService) { 
+    database.getMenuCatagories().subscribe(ref => {
+      this.categories = ref;      
+    })
+  }  
   ngOnInit() {
   }
 

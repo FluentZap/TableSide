@@ -29,10 +29,14 @@ export class DataService {
     return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Parties').add(data);
   }
 
+  getParties() {
+    return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Parties').valueChanges();
+  }
 
   getMenuCatagories() {
     return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('MenuCategories').doc('Categories').valueChanges();
   }
+
   getMenuItems(): Observable<any>
   getMenuItems(categories: string): Observable<any>
   getMenuItems(categories?: string) : Observable<any> {    
@@ -53,7 +57,8 @@ export class DataService {
   }
 
   addOrderItem(OrderId: string, Item: {}) {
-    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders').doc(OrderId).collection('Items').add(Item);
+    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders')
+    .doc(OrderId).collection('Items').add(Item);
   }
 
 }
