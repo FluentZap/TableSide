@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ClientComponent } from './client/client.component';
+import { PartyDetailComponent } from './party-detail/party-detail.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { MenuComponent } from './menu/menu.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'parties', component: ClientComponent},
+  { path: 'parties/:partyId', component: PartyDetailComponent },
+  { path: 'parties/:partyId/orders/:orderId', component: OrderDetailComponent},
+  { path: 'parties/:partyId/orders/:orderId/menu', component: MenuComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
