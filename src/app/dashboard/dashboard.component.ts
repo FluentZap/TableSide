@@ -12,6 +12,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  // let sidebar = document.querySelector('.sidebar');
+  // let sidebarToggle = document.querySelector('.sidebar-toggle');
+  // let toggleSidebar = 
 
 
 }
