@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: '', component: ClientComponent},
   { path: 'parties', component: ClientComponent},
   { path: 'parties/:partyId', component: PartyDetailComponent },
   { path: 'parties/:partyId/orders/:orderId', component: OrderDetailComponent},
