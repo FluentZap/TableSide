@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService, Location } from './../../services/data.service';
+import { DataService } from './../../services/data.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 // import { Location } from '@angular/common';
 
 @Component({
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class ClientComponent implements OnInit {
 
-  parties: [] = [];
+  parties: any[] = [];
   constructor(private dataService: DataService) {
-    // this.parties = dataService.
+
+    dataService.getParties().subscribe( ref => this.parties = ref);
    }
   
    addParty() {
@@ -20,7 +22,7 @@ export class ClientComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log();
+
   }
 
 }
