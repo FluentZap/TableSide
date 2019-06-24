@@ -53,7 +53,8 @@ export class DataService {
   }
 
   addOrderItem(OrderId: string, Item: {}) {
-    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders').doc(OrderId).collection('Items').add(Item);
+    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders')
+    .doc(OrderId).collection('Items').add(Item);
   }
 
 }
