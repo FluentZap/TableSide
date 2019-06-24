@@ -45,6 +45,16 @@ export class DataService {
     }
   }
 
+  addOrder(partyId: string) {
+    let data = {
+      partyId: partyId
+    }
+    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders').add(data);
+  }
+
+  addOrderItem(OrderId: string, Item: {}) {
+    this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Orders').doc(OrderId).collection('Items').add(Item);
+  }
 
 }
 
