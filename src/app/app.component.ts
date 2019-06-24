@@ -20,10 +20,4 @@ export class AppComponent {
       console.log(ref);
     });
   }
-
-  addParty() {
-    this.dataservice.addParty().then( ref => {
-      console.log(ref.id);
-    });
-  }
 }

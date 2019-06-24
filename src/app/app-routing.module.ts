@@ -6,6 +6,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
+  { path: 'partyDetail', component: PartyDetailComponent},
   { path: 'parties', component: ClientComponent},
   { path: 'parties/:partyId', component: PartyDetailComponent },
   { path: 'parties/:partyId/orders/:orderId', component: OrderDetailComponent},

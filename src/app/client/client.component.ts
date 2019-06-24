@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  template: `<img src="assets/img/plus.png">`,
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
@@ -12,5 +11,15 @@ export class ClientComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+  addParty(){
+    console.log("in addParty Function");
+  }
 }
