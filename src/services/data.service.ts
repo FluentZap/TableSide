@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +30,20 @@ export class DataService {
   }
 
 
-  // getMenuCatagories() {
-  //   this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Menu').
-  // }
+  getMenuCatagories() {
+    return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('MenuCategories').doc('Categories').valueChanges();
+  }
+  getMenuItems(): Observable<any>
+  getMenuItems(categories: string): Observable<any>
+  getMenuItems(categories?: string) : Observable<any> {    
+    if (!categories || categories === "All") {
+      return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr').collection('Menu').valueChanges();
+      
+    } else {
+      return this.database.collection('Location').doc('aeMFrRDSm3HJvnb2pBrr')
+      .collection('Menu', ref => ref.where('category', '==', categories)).valueChanges()      
+    }
+  }
 
 
 }
