@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  padding: 15px;
+  background-color: #EEEEEE;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar-nav .space-top {
+  margin-top: 25px;
+}
+
+.sidebar-nav.bottom {
+  margin-top: auto;
+}
+
+.sidebar:not(.open) li {
+  display: block;
+}
+
+.sidebar.open li {
+  display: flex;
+}
+
+.sidebar.open li:not(.no-sub-list) {
+  flex-direction: column;
+}
+
+.sidebar-toggle svg {
+  transition: transform 0.2s;
+  transform:+_ rotate(180deg);
+}
+
+.sidebar.open .sidebar-toggle svg {
+  transform:+_ rotate(0deg);
+}
+
+.sidebar.open .sidebar-toggle {
+  margin-left: auto;
+}
+
+.sidebar-nav a {
+  position: relative;
+  display: flex;
+  flex: auto;
+  color: grey;
+  padding: 5px;
+  border-radius: 9px;
+  text-decoration: none;
+}
+
+.sidebar-nav li:not(.active) ul, .sidebar:not(.open) li ul  {
+  display: none;
+}
+
+.sidebar:not(.open) a {
+  display: block;
+}
+
+.sidebar.open a.icon-only {
+  flex: 0;
+}
+
+.sidebar.open a span {
+  margin-right: 5px; /* Used to place the badge correctly */
+}
+
+.sidebar:not(.open) a span {
+  display: none;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a:focus, .sidebar-nav li.active > a {
+  color: #223fe3;
+}
+
+.sidebar-nav a:hover, .sidebar-nav li a:focus {
+  background-color: rgba(26,54,209,0.1);
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+}
+
+.sidebar a .activity-indicator {
+  display: flex;
+  position: relative;
+  width: 5px;
+  height: 5px;
+  background-color: red;
+  margin: auto;
+  margin-right: 0;
+  border-radius: 100%;
+}
+
+.sidebar:not(.open) a .activity-indicator {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.sidebar svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebar a:active svg {
+  transform:+_ scale(0.9);
+}
+
+.sidebar a:not(.icon-only) svg:not(.hint) {
+  margin-right: 15px;
+}
+
+.sidebar:not(.open) svg {
+  margin-right: 0 !important;
+}

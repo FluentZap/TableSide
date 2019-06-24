@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../services/data.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+// import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor() { }
+  parties: any[] = [];
+  constructor(private dataService: DataService) {
+
+    dataService.getParties().subscribe( ref => this.parties = ref);
+   }
+  
+   addParty() {
+     this.dataService.addParty().then(ref => console.log(ref.id));
+   }
 
   ngOnInit() {
+
   }
   myFunction() {
     var x = document.getElementById("myLinks");
@@ -23,3 +36,4 @@ export class ClientComponent implements OnInit {
     console.log("in addParty Function");
   }
 }
+
